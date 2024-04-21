@@ -1,7 +1,7 @@
 /* All colors should be defined here */
 @define-color text-color @text-color;
 @define-color accent-color #D3C0D3;
-@define-color background-color rgba(187,170,221, 0.42);
+@define-color background-color rgba(69,69,96, 0.69);
 
 * {
     color: @text-color;
