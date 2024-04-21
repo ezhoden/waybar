@@ -14,8 +14,7 @@
         "custom/media"
     ],
     "modules-center": [
-        "clock",
-        "sway/window"
+        "clock"
     ],
     "modules-right": [
         // "mpd",
@@ -103,8 +102,8 @@
         }
     },
     "tray": {
-        // "icon-size": 21,
-        "spacing": 10
+        "icon-size": 16,
+        "spacing": 8
     },
     "clock": {
         // "timezone": "America/New_York",
