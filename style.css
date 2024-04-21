@@ -1,22 +1,16 @@
 /* All colors should be defined here */
 @define-color text-color @text-color;
 @define-color accent-color #D3C0D3;
-@define-color background-color rgba(43, 48, 59, 0.5);
+@define-color background-color rgba(187,170,221, 0.42);
 
 * {
+    color: @text-color;
     font-family: "JetBrainsMonoNL Nerd Font Mono", sans-serif;
     font-size: 14px;
 }
 
 window#waybar {
-    /* background-color: @background-color; */
-    /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
     background: transparent;
-    color: @text-color;
-    transition-property: background-color;
-    transition-duration: .5s;
-    border-radius: 8px;
-    padding: 8px;
 }
 
 window#waybar.hidden {
@@ -90,7 +84,7 @@ button:hover {
 .modules-left,
 .modules-center,
 .modules-right {
-    margin: 8px;
+    margin: 4px;
     background-color: @background-color;
     border-radius: 16px;
 }
@@ -214,6 +208,7 @@ label:focus {
 
 #language {
     padding: 0 8px;
+    font-weight: bold;
 }
 
 #keyboard-state {
