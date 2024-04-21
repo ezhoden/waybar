@@ -10,7 +10,8 @@
 }
 
 window#waybar {
-    background: transparent;
+    background-color: @background-color;
+    border-radius: 16px;
 }
 
 window#waybar.hidden {
@@ -78,15 +79,15 @@ button:hover {
 
 #window,
 #workspaces {
-    margin: 0 4px;
+    /* margin: 0 4px; */
 }
 
 .modules-left,
 .modules-center,
 .modules-right {
-    margin: 4px;
-    background-color: @background-color;
-    border-radius: 16px;
+    /* margin: 4px; */
+    /* background-color: @background-color; */
+    /* border-radius: 16px; */
 }
 
 #clock {
