@@ -1,34 +1,23 @@
 // -*- mode: jsonc -*-
 {
-    // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 32, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
-    // "spacing": 8, // Gaps between modules (4px)
+    "layer": "top",
+    "height": 32,
     "margin-top": 4,
     "margin-right": 4,
     "margin-left": 4,
     "margin-bottom": 0,
-    // Choose the order of the modules
     "modules-left": [
-        "hyprland/workspaces",
-        // "sway/mode",
-        // "sway/scratchpad",
-        "custom/media"
+        "clock",
+        "hyprland/workspaces"
     ],
     "modules-center": [
-        "clock"
+        "mpris"
     ],
     "modules-right": [
-        // "mpd",
-        // "idle_inhibitor",
-        // "pulseaudio",
-        // "network",
-        // "power-profiles-daemon",
-        // "cpu",
+        "pulseaudio",
+        "cpu",
         "memory",
-        // "temperature",
-        // "backlight",
+        "temperature",
         "keyboard-state",
         "hyprland/language",
         "battery",
@@ -75,38 +64,15 @@
         "tooltip": true,
         "tooltip-format": "{app}: {title}"
     },
-    "mpd": {
-        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
-        "format-disconnected": "Disconnected ",
-        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-        "unknown-tag": "N/A",
-        "interval": 5,
-        "consume-icons": {
-            "on": " "
-        },
-        "random-icons": {
-            "off": "<span color=\"#f53c3c\"></span> ",
-            "on": " "
-        },
-        "repeat-icons": {
-            "on": " "
-        },
-        "single-icons": {
-            "on": "1 "
-        },
-        "state-icons": {
-            "paused": "",
-            "playing": ""
-        },
-        "tooltip-format": "MPD (connected)",
-        "tooltip-format-disconnected": "MPD (disconnected)"
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
+    "mpris": {
+	"format-len": "10",
+	"format": "{player_icon} <b>{artist} - {title}</b>",
+	"format-paused": "{artist} - {title}",
+	"format-paused-len": "10",
+	"player-icons": {
+            "default": "▶"
+	}
+	// "ignored-players": ["firefox"]
     },
     "tray": {
         "icon-size": 16,
@@ -118,69 +84,32 @@
         "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
-        "format": "{usage}% ",
-        "tooltip": false
+        "format": "<b>CPU:</b> {usage}%"
     },
     "memory": {
-        "format": "{used:0.1f}/{total:0.1f}G"
+        "format": "<b>RAM:</b> {used:0.1f}/{total:0.1f}G"
     },
     "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "thermal-zone": 2,
         "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
+        "format": "<b>{temperatureC}°C</b> {icon}",
         "format-icons": ["", "", ""]
     },
-    "backlight": {
-        // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
-    },
     "battery": {
-        "states": {
-            // "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
         "format": "<span font=\"24px\">{icon}</span>",
         "format-full": "<span font=\"24px\">{icon}</span>",
         "format-charging": "<span font=\"24px\"></span>",
         "format-plugged": "<span font=\"24px\"></span>",
         "format-alt": "<span font=\"24px\">{icon}</span>",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
         "format-icons": ["", "", "", "", ""],
         "tooltip": true,
         "tooltip-format": "Capacity: {capacity}%\n{timeTo}"
     },
-    "power-profiles-daemon": {
-      "format": "{icon}",
-      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-      "tooltip": true,
-      "format-icons": {
-        "default": "",
-        "performance": "",
-        "balanced": "",
-        "power-saver": ""
-      }
-    },
-    "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
-    },
     "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
+        "scroll-step": 5,
+        "format": "<span font=\"24px\">{icon}</span> <span font=\"24px\">{format_source}</span>",
         "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
+        "format-source": "",
         "format-source-muted": "",
         "format-icons": {
             "headphone": "",
@@ -191,18 +120,7 @@
             "car": "",
             "default": ["", "", ""]
         },
+        "tooltip-format": "{desc}\nVolume: {volume}%",
         "on-click": "pavucontrol"
-    },
-    "custom/media": {
-        "format": "{icon} {}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     }
 }
