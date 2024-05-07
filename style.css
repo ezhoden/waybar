@@ -183,6 +183,10 @@ label:focus {
 #tray {
 }
 
+#tray menu {
+    background-color: @background-color;
+}
+
 #tray > .passive {
     -gtk-icon-effect: dim;
 }
