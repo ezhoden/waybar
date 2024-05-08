@@ -14,7 +14,8 @@
         "mpris"
     ],
     "modules-right": [
-        "pulseaudio",
+        "pulseaudio#audio",
+        "pulseaudio#mic",
         "cpu",
         "memory",
         "temperature",
@@ -105,22 +106,24 @@
         "tooltip": true,
         "tooltip-format": "Capacity: {capacity}%\n{timeTo}"
     },
-    "pulseaudio": {
+    "pulseaudio#audio": {
         "scroll-step": 5,
-        "format": "<span font=\"24px\">{icon}</span> <span font=\"24px\">{format_source}</span>",
-        "format-muted": " {format_source}",
-        "format-source": "",
-        "format-source-muted": "",
+        "format": "<span font=\"24px\">{icon}</span>",
+        "format-muted": "",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
             "default": ["", "", ""]
         },
         "tooltip-format": "{desc}\nVolume: {volume}%",
-        "on-click": "pavucontrol"
+        "on-click": "amixer set Master toggle && amixer get Master | grep '\\[off\\]' && notify-send \"Sound turned off\" || notify-send \"Sound turned on\"",
+        "on-click-right": "pavucontrol"
+    },
+    "pulseaudio#mic": {
+        "format": "{format_source}",
+        "format-muted": "{format_source}",
+        "format-source": "<span font=\"24px\"></span>",
+        "format-source-muted": "<span font=\"24px\"></span>",
+        "tooltip": false,
+        "on-click": "amixer set Capture toggle && amixer get Capture | grep '\\[off\\]' && notify-send \"Microphone turned off\" || notify-send \"Microphone turned on\"",
+        "on-click-right": "pavucontrol"
     }
 }
