@@ -34,7 +34,7 @@
             "2": "",
             "3": "",
             "4": "",
-            "5": "",
+            "5": "",
             "urgent": "",
             "focused": "",
             "default": ""
@@ -51,8 +51,8 @@
 	"format-paused-len": "10",
 	"player-icons": {
             "default": "▶"
-	}
-	// "ignored-players": ["firefox"]
+	},
+	"ignored-players": ["brave"]
     },
     "tray": {
         "icon-size": 16,
@@ -63,12 +63,15 @@
         "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
+        "interval": 1,
         "format": "<b>CPU:</b> {usage}%"
     },
     "memory": {
+        "interval": 1,
         "format": "<b>RAM:</b> {used:0.1f}/{total:0.1f}G"
     },
     "temperature": {
+        "interval": 1,
         "thermal-zone": 2,
         "critical-threshold": 90,
         "format": "<b>{temperatureC}°C</b> {icon}",
